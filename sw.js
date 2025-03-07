@@ -1,21 +1,19 @@
-// sw.js — упрощённый пример
-
+// sw.js – простой пример сервис-воркера для кэширования файлов
 self.addEventListener('install', (event) => {
-  console.log('[Service Worker] Install');
-  // Можно закэшировать нужные файлы
   event.waitUntil(
     caches.open('expensive-cache').then((cache) => {
       return cache.addAll([
         '/index.html',
         '/manifest.json',
-        // добавьте нужные ресурсы
+        '/assets/emulator.apk',
+        '/assets/photoo.png',
+        '/assets/photoo.png',
+        '/assets/photoo.png',
+        '/assets/photoo.png',
+        '/assets/photoo.png'
       ]);
     })
   );
-});
-
-self.addEventListener('activate', (event) => {
-  console.log('[Service Worker] Activate');
 });
 
 self.addEventListener('fetch', (event) => {
